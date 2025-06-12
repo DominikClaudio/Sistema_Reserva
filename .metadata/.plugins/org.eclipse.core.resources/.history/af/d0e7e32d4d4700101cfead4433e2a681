@@ -1,0 +1,77 @@
+package proyectoSistema.configSecurity;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+import proyectoSistema.model.Usuario;
+import proyectoSistema.repository.UsuarioRepository;
+import proyectoSistema.service.UsuarioService;
+
+@Configuration
+public class SecurityConfig {
+	
+	@Autowired
+	private UsuarioService usuarioService;
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+		http
+		.userDetailsService(usuarioService)
+		.authorizeHttpRequests(auth -> auth
+		        .requestMatchers(
+		                "/css/**",
+		                "/Imagenes/**",
+		                "/",                   // página inicial
+		                "/login/**", "/login/registroUsuario", // auth públicas
+		                "/habitaciones",       // <- ahora es pública
+		                "/habitaciones/**"     // si llegas a tener sub-rutas
+		        ).permitAll()
+		        .requestMatchers("/admin/**").hasAuthority("ADMIN")
+		        .requestMatchers("/cliente/**").hasAuthority("CLIENTE")
+		        .anyRequest().authenticated()
+				)
+		.formLogin(form -> form
+				.loginPage("/login")
+				.defaultSuccessUrl("/rol/redireccionar", true)
+				.permitAll()
+				)
+		.logout(logout -> logout
+				.logoutSuccessUrl("/")
+				.permitAll()
+				);
+		
+		return http.build();
+	}
+	
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
+		return config.getAuthenticationManager();
+	}
+	
+	@Bean
+	CommandLineRunner init(UsuarioRepository repo, BCryptPasswordEncoder encoder) {
+	    return args -> {
+	        if (repo.findByCorreo("admin@correo.com").isEmpty()) {
+	            Usuario admin = new Usuario();
+	            admin.setNombre("Admin General");
+	            admin.setCorreo("admin@correo.com");
+	            admin.setContrasena(encoder.encode("admin123"));
+	            admin.setRol("ADMIN");
+	            repo.save(admin);
+	        }
+	    };
+	}
+
+}

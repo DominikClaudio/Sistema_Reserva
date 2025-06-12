@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <title>Inicio Cliente</title>
+	<link rel="stylesheet" th:href="@{/css/generalStyle.css}">
+	<link rel="stylesheet" th:href="@{/css/mainStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/cliente.css}">
+</head>
+<body>
+
+    <div class="cliente-container">
+        <nav th:replace="fragments/navCliente :: navbarCliente"></nav>
+
+        <div class="cliente-contenido">
+            <h1>Bienvenido al sistema de reservas</h1>
+            <p>Explora las habitaciones, realiza tus reservas y gestiona tus opciones desde aquí.</p>
+        </div>
+    </div>
+
+</body>
+</html>

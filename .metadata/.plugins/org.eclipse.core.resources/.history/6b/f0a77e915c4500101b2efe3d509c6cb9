@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido al Sistema de Hospedaje</h1>
+    <nav>
+        <a th:href="@{/}">Inicio</a> |
+        <a th:href="@{/habitaciones}">Habitaciones</a> |
+        <a th:href="@{/login}">Login</a> |
+        <a th:href="@{/registro}">Registro</a>
+    </nav>
+    <p>Selecciona una opción del menú.</p>
+</body>
+</html>

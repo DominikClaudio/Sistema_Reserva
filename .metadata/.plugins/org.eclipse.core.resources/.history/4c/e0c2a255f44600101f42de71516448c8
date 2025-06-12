@@ -1,0 +1,5 @@
+package proyectoSistema.repository;
+
+public interface UsuarioRepository {
+
+}

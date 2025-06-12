@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/css/generalStyle.css}">
+<link rel="stylesheet" th:href="@{/css/mainStyle.css}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<body>
+	<nav class="navbar-admin navbar" th:fragment="navbarAdmin">
+		<div class="navbar-seccion izquierda">
+			<div class="logo">Hospedaje</div>
+		</div>
+
+		<div class="navbar-seccion centro">
+			<ul class="nav-links">
+				<li><a th:href="@{/admin/inicio}"
+					th:classappend="${currentPath.startsWith('/admin/inicio') ? 'activo' : ''}">Inicio</a></li>
+				<li><a th:href="@{/admin/usuarios}"
+					th:classappend="${currentPath.startsWith('/admin/usuarios') ? 'activo' : ''}">Usuarios</a></li>
+				<li><a th:href="@{/admin/habitaciones}"
+					th:classappend="${currentPath.startsWith('/admin/habitaciones') ? 'activo' : ''}">Habitaciones</a></li>
+				<li><a th:href="@{/admin/reservas}"
+					th:classappend="${currentPath.startsWith('/admin/reservas') ? 'activo' : ''}">Reservas</a></li>
+				<li><a th:href="@{/admin/estados}"
+					th:classappend="${currentPath.startsWith('/admin/estados') ? 'activo' : ''}">Estados</a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-seccion derecha">
+            <form th:action="@{/logout}" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button type="submit" class="btn-login">Cerrar Sesión</button>
+            </form>
+        </div>
+	</nav>
+</body>
+</html>

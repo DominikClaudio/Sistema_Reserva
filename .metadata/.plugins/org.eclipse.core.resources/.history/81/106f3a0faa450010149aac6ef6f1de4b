@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/CSS/generalStyle.css}">
+<link rel="stylesheet" th:href="@{/CSS/mainStyle.css}">
+<body>
+	<nav class="navbar-cliente" th:fragment="navbarCliente">
+		<div class="logo">Hospedaje</div>
+		<ul class="nav-links">
+			<li><a th:href="@{/cliente/inicio}"
+				th:classappend="${currentPath.startsWith('/cliente/inicio') ? 'activo' : ''}">Inicio</a></li>
+			<li><a th:href="@{/cliente/habitaciones}"
+				th:classappend="${currentPath.startsWith('/cliente/habitaciones') ? 'activo' : ''}">Habitaciones</a></li>
+			<li><a th:href="@{/cliente/mis-reservas}"
+				th:classappend="${currentPath.startsWith('/cliente/mis-reservas') ? 'activo' : ''}">Mis
+					Reservas</a></li>
+			<li><a th:href="@{/cliente/mi-seleccion}"
+				th:classappend="${currentPath.startsWith('/cliente/mi-seleccion') ? 'activo' : ''}">Mi
+					Selección</a></li>
+			<li><a th:href="@{/cliente/perfil}"
+				th:classappend="${currentPath.startsWith('/cliente/perfil') ? 'activo' : ''}">Perfil</a></li>
+			<li><a th:href="@{/logout}">Cerrar Sesión</a></li>
+		</ul>
+	</nav>
+</body>
+</html>

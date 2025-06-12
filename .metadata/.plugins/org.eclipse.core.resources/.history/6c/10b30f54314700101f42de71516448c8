@@ -1,0 +1,5 @@
+package proyectoSistema.service;
+
+public class UsuarioService {
+
+}

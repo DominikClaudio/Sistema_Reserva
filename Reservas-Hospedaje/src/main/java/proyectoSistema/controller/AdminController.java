@@ -1,0 +1,41 @@
+package proyectoSistema.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@Controller
+public class AdminController {
+
+	@GetMapping("/admin/inicio")
+    public String inicioAdmin(HttpServletRequest request, Model model) {
+        model.addAttribute("currentPath", request.getRequestURI());
+        return "adminInicio";
+    }
+
+    @GetMapping("/admin/usuarios")
+    public String gestionUsuarios(HttpServletRequest request, Model model) {
+        model.addAttribute("currentPath", request.getRequestURI());
+        return "adminUsuarios";
+    }
+
+    @GetMapping("/admin/habitaciones")
+    public String gestionHabitaciones(HttpServletRequest request, Model model) {
+        model.addAttribute("currentPath", request.getRequestURI());
+        return "adminHabitaciones";
+    }
+
+    @GetMapping("/admin/reservas")
+    public String gestionReservas(HttpServletRequest request, Model model) {
+        model.addAttribute("currentPath", request.getRequestURI());
+        return "adminReservas";
+    }
+
+    @GetMapping("/admin/estados")
+    public String gestionEstados(HttpServletRequest request, Model model) {
+        model.addAttribute("currentPath", request.getRequestURI());
+        return "admin/adminEstados";
+    }
+}

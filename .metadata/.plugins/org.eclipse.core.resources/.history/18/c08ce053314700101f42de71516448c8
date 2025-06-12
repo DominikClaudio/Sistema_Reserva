@@ -1,0 +1,27 @@
+package proyectoSistema.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@Controller
+public class UsuarioController {
+	
+	@GetMapping("/registro")
+	public String mostrarRegistro(HttpServletRequest request, Model model ) {
+		model.addAttribute("currentPath", request.getRequestURI());
+		return "/login/registroUsuario";
+	}
+	
+	
+	public String procesarRegistro(	@RequestParam String nombre,
+									@RequestParam String correo,
+									@RequestParam String password) {
+		String passwordCifrada = passwordEncoder.encoder(password);
+		
+		
+	}
+}

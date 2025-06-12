@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Habitaciones</title></head>
+<body>
+    <h1>Tipos de Habitaciones</h1>
+    <nav>
+        <a th:href="@{/}">Inicio</a> |
+        <a th:href="@{/habitaciones}">Habitaciones</a> |
+        <a th:href="@{/login}">Login</a> |
+        <a th:href="@{/registro}">Registro</a>
+    </nav>
+    <p>Aquí se mostrarán las habitaciones disponibles.</p>
+</body>
+</html>

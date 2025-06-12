@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/CSS/generalStyle.css}">
+<link rel="stylesheet" th:href="@{/CSS/mainStyle.css}">
+<body>
+    <nav class="navbar navbar-centrado" th:fragment="navbar">
+        <div class="logo">Hospedaje</div>
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Inicio</a></li>
+            <li><a th:href="@{/habitaciones}">Habitaciones</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

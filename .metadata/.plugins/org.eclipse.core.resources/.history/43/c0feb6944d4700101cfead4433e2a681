@@ -1,0 +1,81 @@
+package proyectoSistema.configSecurity;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+import proyectoSistema.model.Usuario;
+import proyectoSistema.repository.UsuarioRepository;
+import proyectoSistema.service.UsuarioService;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(usuarioService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .authenticationProvider(authenticationProvider()) // <-- agregado
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/css/**", "/imagenes/**", "/", "/login/**", "/registro", "/login/registroUsuario", "/habitaciones", "/habitaciones/**").permitAll()
+                .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                .requestMatchers("/cliente/**").hasAuthority("CLIENTE")
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/login")
+                .defaultSuccessUrl("/rol/redireccionar", true)
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutSuccessUrl("/")
+                .permitAll()
+            );
+
+        return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
+
+    @Bean
+    CommandLineRunner init(UsuarioRepository repo, BCryptPasswordEncoder encoder) {
+        return args -> {
+            if (repo.findByCorreo("admin@correo.com").isEmpty()) {
+                Usuario admin = new Usuario();
+                admin.setNombre("Admin General");
+                admin.setCorreo("admin@correo.com");
+                admin.setContrasena(encoder.encode("admin123"));
+                admin.setRol("ADMIN");
+                repo.save(admin);
+            }
+        };
+    }
+}
+

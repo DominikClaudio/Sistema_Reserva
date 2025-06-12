@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="@{/CSS/generalStyle.css}">
+<link rel="stylesheet" th:href="@{/CSS/mainStyle.css}">
+<body>
+	<nav class="navbar" th:fragment="navbar">
+		<div class="navbar-seccion izquierda">
+			<div class="logo">Hospedaje</div>
+		</div>
+
+		<div class="navbar-seccion centro">
+			<ul class="nav-links">
+				<li><a th:href="@{/}"
+					th:classappend="${#request.requestURI == '/' ? 'activo' : ''}">Inicio</a></li>
+				<li><a th:href="@{/habitaciones}"
+					th:classappend="${#request.requestURI.startsWith('/habitaciones') ? 'activo' : ''}">Habitaciones</a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-seccion derecha">
+			<a class="btn-login" th:href="@{/login}">Iniciar Sesión</a>
+		</div>
+	</nav>
+</body>
+</html>

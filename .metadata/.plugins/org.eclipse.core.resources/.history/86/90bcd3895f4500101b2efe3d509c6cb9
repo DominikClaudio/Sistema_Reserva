@@ -1,0 +1,134 @@
+/* Fondo completo */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('/imagenes/fondo-hotel.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/* Contenedor para que todo se mantenga ordenado */
+.contenedor {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Oscurece el fondo para mayor legibilidad */
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.nav-links li a:hover {
+    color: #ffd700;
+}
+
+/* Contenido central */
+.contenido {
+    text-align: center;
+    padding-top: 150px;
+}
+
+.contenido h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.contenido p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: #ffd700;
+    color: #000;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #e5c100;
+}
+
+<!-- Habitaciones 
+
+.primer-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reserva-box {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h4 {
+    margin-bottom: 10px;
+}
+
+.detalle {
+    margin-top: 20px;
+}
+
+.fila {
+    margin-bottom: 15px;
+}
+
+dt, dd {
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+}
+
+dd {
+    font-weight: normal;
+}
+
+.enlace-volver {
+    margin-top: 20px;
+}
+
+.enlace-volver a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.enlace-volver a:hover {
+    text-decoration: underline;
+}
+
+

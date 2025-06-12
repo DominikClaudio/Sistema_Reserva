@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Panel Administrador</title>
+	<link rel="stylesheet" th:href="@{/CSS/generalStyle.css}">
+	<link rel="stylesheet" th:href="@{/CSS/mainStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+    <div class="admin-container">
+        <nav th:replace="fragments/navAdmin :: navbarAdmin"></nav>
+
+        <div class="admin-contenido">
+            <h1>Bienvenido al panel administrativo</h1>
+            <p>Gestiona habitaciones, usuarios, estados y reservas desde aquí.</p>
+        </div>
+    </div>
+
+</body>
+</html>

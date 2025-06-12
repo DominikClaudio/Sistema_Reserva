@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Hospedaje</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+    <div class="contenedor">
+        <nav class="navbar">
+            <div class="logo">Hospedaje</div>
+            <ul class="nav-links">
+                <li><a th:href="@{/}">Inicio</a></li>
+                <li><a th:href="@{/habitaciones}">Habitaciones</a></li>
+            </ul>
+        </nav>
+
+        <div class="contenido">
+            <h1>Bienvenido al sistema de reservas</h1>
+            <p>Reserva tu habitación ideal con solo unos clics.</p>
+            <a class="btn" th:href="@{/habitaciones}">Ver Habitaciones</a>
+        </div>
+    </div>
+</body>
+</html>
+

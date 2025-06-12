@@ -1,0 +1,199 @@
+
+/* Contenedor que oscurece el fondo */
+.contenedor {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Barra de navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+}
+
+.navbar-seccion {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.izquierda {
+    justify-content: flex-start;
+}
+
+.centro {
+    justify-content: center;
+}
+
+.derecha {
+    justify-content: flex-end;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.nav-links li a:hover {
+    color: #ffd700;
+}
+
+.btn-login {
+    background-color: #ffd700;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.btn-login:hover {
+    background-color: #e5c100;
+}
+
+/* Contenido central del index */
+.contenido {
+    text-align: center;
+    padding-top: 150px;
+}
+
+.contenido h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.contenido p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: #ffd700;
+    color: #000;
+    padding: 12px 24px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #e5c100;
+}
+
+/* -------------------
+   Vista de Habitaciones
+------------------- */
+.primer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.reserva-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 1100px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #333;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px;
+    justify-items: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 250px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card .btn {
+    background-color: #ffd700;
+    color: black;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.card .btn:hover {
+    background-color: #ffea71;
+}
+
+/* Otros estilos */
+h4 {
+    margin-bottom: 10px;
+}
+
+.enlace-volver {
+    margin-top: 20px;
+}
+
+.enlace-volver a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.enlace-volver a:hover {
+    text-decoration: underline;
+}
